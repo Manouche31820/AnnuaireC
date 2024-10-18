@@ -47,6 +47,32 @@ int nom_check(Annuaire *book, char *nom) {
     return 0;
 }
 
+void sauvegarde(Annuaire *book) {
+    int nombre = 0;
+    FILE *fic = fopen("sauvegarde.safe", "w");
+    if (fic == NULL) {
+        perror("Erreur lors de l'ouverture du fichier de sauvegarde");
+        exit(1);
+    }
+        while (book->tab_nom[nombre][0] != 0)
+        nombre++;
+
+    fprintf(fic, "\n\n");
+    fprintf(fic, "*******************************************\n");
+    fprintf(fic, "*            ANNUAIRE STRUCTURE           *\n");
+    fprintf(fic, "*******************************************\n");
+    fprintf(fic, "*                                         *\n");
+    fprintf(fic, "*   NOM                        NUMERO     *\n");
+    fprintf(fic, "*                                         *\n");
+    fprintf(fic, "*******************************************\n");
+
+    for (int i = 0; i < nombre; i++) {
+        fprintf(fic, "*   %-26s %-11s *\n", book->tab_nom[i], book->tab_numero[i]);
+    }
+
+    fclose(fic);
+}
+
 void add_contact(Annuaire *book, char *nom, char *numero){
     int i = 0;int j = 0;int k = 0;
     while (book->tab_nom[i][0] != 0)

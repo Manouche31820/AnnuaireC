@@ -12,6 +12,7 @@ int main(){
     Annuaire book;
     char nom[100];
     char numero[100];
+
     memset(book.tab_nom, '\0', sizeof(book.tab_nom));
     memset(book.tab_numero, '\0', sizeof(book.tab_numero));
 
@@ -26,6 +27,7 @@ while(1) {
         printf("\t| 2. Rechercher un contact                |\n");
         printf("\t| 3. Ajouter un contact                   |\n");
         printf("\t| 4. Supprimer un contact                 |\n");
+        printf("\t| 5. Sauvegarder les contacts             |\n");
         printf("\t-------------------------------------------\n\n");
 
         printf("\tTapez votre choix: ");
@@ -59,7 +61,9 @@ while(1) {
             printf("Quel contact souhaitez vous supprimer ?\n");
             scanf("%s", nom);
             suppr_contact(&book, nom);
-        } else {
+        }else if(choice == 5){
+            sauvegarde(&book);
+        }else {
             printf("Votre choix doit être compris entre 1 et 4...\n");
         }
     }

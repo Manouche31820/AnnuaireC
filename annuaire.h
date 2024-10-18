@@ -11,5 +11,6 @@ void search(Annuaire *book, char *nom);
 int nom_check(Annuaire *book, char *nom);
 void add_contact(Annuaire *book, char *nom, char *numero);
 void print_contacts(Annuaire *book);
+void sauvegarde(Annuaire *book);
 
 #endif
