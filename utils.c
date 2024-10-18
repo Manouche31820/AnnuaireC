@@ -59,24 +59,26 @@ void add_contact(char *nom, char *numero, char tab_nom[30][20], char tab_numero[
 void print_contacts(char tab_nom[30][20], char tab_numero[30][20]){
     int i = 0;int j = 0;
     printf("\n\n");
-    printf("-----------ANNUAIRE------------------------\n");
-    printf("-------------------------------------------\n");
-    printf("---NOM-------------NUMERO------------------\n");
-    printf("-------------------------------------------\n");
+    printf("*******************************************\n");
+    printf("*               ANNUAIRE                  *\n");
+    printf("*******************************************\n");
+    printf("*                                         *\n");
+    printf("*   NOM                        NUMERO     *\n");
+    printf("*                                         *\n");
+    printf("*******************************************\n");
 
     while(tab_nom[j][0] != 0){
         j++;
     }
-    // printf("J = %d", j);
-    if(tab_nom[i][0] != '\0'){
-        for(int i = 0; i != j; i++){
-            printf("   %s           %s\n", tab_nom[i], tab_numero[i]);
-        }
-        printf("\n|");
+if (tab_nom[i][0] != '\0') {
+    for (int i = 0; i != j; i++) {
+        printf("*   %-26s%-11s*\n", tab_nom[i], tab_numero[i]);
     }
-    else{
-        printf("\n--Vous n'avez aucun contact actuellement---\n\n");
-    }
+    printf("*******************************************\n");
+} else {
+    printf("*     Aucune donnée disponible             *\n");
+    printf("*******************************************\n");
+}
 
 
 }

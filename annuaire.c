@@ -14,12 +14,25 @@ int main(){
     memset(tab_nom, '\0', sizeof(tab_nom));
     memset(tab_numero, '\0', sizeof(tab_numero));
 
-    printf("\n\t\tBienvenue dans votre annuaire.\n\n");
-    while(1){
-        printf("Souhaitez vous:\n\t-1 Afficher vos contacts\n\t-2 Rechercher un contact\n\t-3 Ajouter un contact\n\t-4 Supprimer un contact\n\n\n");
-        printf("Tapez votre choix:");
+printf("\n\t*******************************************\n");
+printf("\t*     Bienvenue dans votre annuaire       *\n");
+printf("\t*******************************************\n\n");
+
+while(1) {
+        printf("\tQue souhaitez-vous faire ?\n");
+        printf("\t-------------------------------------------\n");
+        printf("\t| 1. Afficher vos contacts                |\n");
+        printf("\t| 2. Rechercher un contact                |\n");
+        printf("\t| 3. Ajouter un contact                   |\n");
+        printf("\t| 4. Supprimer un contact                 |\n");
+        printf("\t-------------------------------------------\n\n");
+
+        printf("\tTapez votre choix: ");
         scanf("%d", &choice);
-        printf("Votre choix est %d\n", choice);
+
+        printf("\n\t-------------------------------------------\n");
+        printf("\tVotre choix est : %d\n", choice);
+        printf("\t-------------------------------------------\n\n");
         if(choice == 1){
             print_contacts(tab_nom,tab_numero);
         }else if(choice == 2){
