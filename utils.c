@@ -61,7 +61,7 @@ void print_contacts(Annuaire *book){
     int i = 0;int j = 0;
     printf("\n\n");
     printf("*******************************************\n");
-    printf("*               ANNUAIRE                  *\n");
+    printf("*            ANNUAIRE STRUCTURE           *\n");
     printf("*******************************************\n");
     printf("*                                         *\n");
     printf("*   NOM                        NUMERO     *\n");
