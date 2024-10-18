@@ -6,12 +6,14 @@
 
 void suppr_contact(char *nom, char tab_nom[30][20], char tab_numero[30][20]){
     int numero = 0;
+    int found = 0;
     for (int i = 0; i < 30; i++) {
         if (strcmp(tab_nom[i], nom) == 0) {
             numero = i;
+            found = 1;
         }
     }
-    if(numero == 30 || numero == 0){
+    if(found == 0){
         printf("Ce contact n'existe pas.\n");
         return;
     }
@@ -24,7 +26,7 @@ void suppr_contact(char *nom, char tab_nom[30][20], char tab_numero[30][20]){
 
 }
 
-void search(char *nom, char tab_nom[30][20], char tab_numero[30][20]){
+void search(char *nom, char **tab_nom, char tab_numero[30][20]){
     int numero = 0;
     for (int i = 0; i < 30; i++) {
         if (strcmp(tab_nom[i], nom) == 0) {
