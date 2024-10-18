@@ -5,14 +5,15 @@
 #include "annuaire.h"
 
 
+
+
 int main(){
     int choice = 0;
-    char tab_nom[30][20];
-    char tab_numero[30][20];
+    Annuaire book;
     char nom[100];
     char numero[100];
-    memset(tab_nom, '\0', sizeof(tab_nom));
-    memset(tab_numero, '\0', sizeof(tab_numero));
+    memset(book.tab_nom, '\0', sizeof(book.tab_nom));
+    memset(book.tab_numero, '\0', sizeof(book.tab_numero));
 
 printf("\n\t*******************************************\n");
 printf("\t*     Bienvenue dans votre annuaire       *\n");
@@ -34,30 +35,30 @@ while(1) {
         printf("\tVotre choix est : %d\n", choice);
         printf("\t-------------------------------------------\n\n");
         if(choice == 1){
-            print_contacts(tab_nom,tab_numero);
+            print_contacts(&book);
         }else if(choice == 2){
             printf("Tapez le nom du contact que vous cherchez:\n");
             scanf("%s", nom);
-            search(nom, tab_nom, tab_numero);
+            search(&book, nom);
         }
         else if(choice == 3){
             printf("Vous avez choisi d'ajouter un contact.\nVeuillez taper le nom du contact à ajouter:\n");
             scanf("%s", nom);
-            if (nom_check(nom, tab_nom) == 1) {
+            if (nom_check(&book, nom) == 1) {
                 printf("Ce nom existe déjà.\n");
             } else {
                 printf("Veuillez taper le numéro du contact à ajouter:\n");
                 scanf("%s", numero);
-                if (nom_check(numero, tab_numero) == 1) {
+                if (nom_check(&book, numero) == 1) {
                     printf("Ce numéro existe déjà.\n");
                 } else {
-                    add_contact(nom, numero, tab_nom, tab_numero);
+                    add_contact(&book, nom, numero);
                 }
             }    
         } else if (choice == 4) {
             printf("Quel contact souhaitez vous supprimer ?\n");
             scanf("%s", nom);
-            suppr_contact(nom, tab_nom, tab_numero);
+            suppr_contact(&book, nom);
         } else {
             printf("Votre choix doit être compris entre 1 et 4...\n");
         }

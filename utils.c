@@ -2,13 +2,14 @@
 #include <stdlib.h>
 #include <strings.h>
 #include <string.h>
+#include "annuaire.h"
 
 
-void suppr_contact(char *nom, char tab_nom[30][20], char tab_numero[30][20]){
+void suppr_contact(Annuaire *book, char *nom){
     int numero = 0;
     int found = 0;
     for (int i = 0; i < 30; i++) {
-        if (strcmp(tab_nom[i], nom) == 0) {
+        if (strcmp(book->tab_nom[i], nom) == 0) {
             numero = i;
             found = 1;
         }
@@ -19,44 +20,44 @@ void suppr_contact(char *nom, char tab_nom[30][20], char tab_numero[30][20]){
     }
     else{
         for(int i = numero; i < 30; i++){
-            strcpy(tab_nom[i], tab_nom[i+1]);
-            strcpy(tab_numero[i], tab_numero[i+1]);
+            strcpy(book->tab_nom[i], book->tab_nom[i+1]);
+            strcpy(book->tab_numero[i], book->tab_numero[i+1]);
         }
     }
 
 }
 
-void search(char *nom, char **tab_nom, char tab_numero[30][20]){
+void search(Annuaire *book, char *nom){
     int numero = 0;
     for (int i = 0; i < 30; i++) {
-        if (strcmp(tab_nom[i], nom) == 0) {
-            printf("Le numero de %s est %s\n", tab_nom[i], tab_numero[i]);
+        if (strcmp(book->tab_nom[i], nom) == 0) {
+            printf("Le numero de %s est %s\n", book->tab_nom[i], book->tab_numero[i]);
             return;
         }
     }
     printf("Ce contact n'existe pas.\n");
 }
 
-int nom_check(char *nom, char tab_nom[30][20]) {
+int nom_check(Annuaire *book, char *nom) {
     for (int i = 0; i < 30; i++) {
-        if (strcmp(tab_nom[i], nom) == 0) {
+        if (strcmp(book->tab_nom[i], nom) == 0) {
             return 1;
         }
     }
     return 0;
 }
 
-void add_contact(char *nom, char *numero, char tab_nom[30][20], char tab_numero[30][20]){
+void add_contact(Annuaire *book, char *nom, char *numero){
     int i = 0;int j = 0;int k = 0;
-    while (tab_nom[i][0] != 0)
+    while (book->tab_nom[i][0] != 0)
         i++;
-    strcpy(tab_nom[i], nom);
-    strcpy(tab_numero[i], numero);
+    strcpy(book->tab_nom[i], nom);
+    strcpy(book->tab_numero[i], numero);
     printf("Le contact %s a été ajouté\n", nom);
 
 }
 
-void print_contacts(char tab_nom[30][20], char tab_numero[30][20]){
+void print_contacts(Annuaire *book){
     int i = 0;int j = 0;
     printf("\n\n");
     printf("*******************************************\n");
@@ -67,12 +68,12 @@ void print_contacts(char tab_nom[30][20], char tab_numero[30][20]){
     printf("*                                         *\n");
     printf("*******************************************\n");
 
-    while(tab_nom[j][0] != 0){
+    while(book->tab_nom[j][0] != 0){
         j++;
     }
-if (tab_nom[i][0] != '\0') {
+if (book->tab_nom[i][0] != '\0') {
     for (int i = 0; i != j; i++) {
-        printf("*   %-26s%-11s*\n", tab_nom[i], tab_numero[i]);
+        printf("*   %-26s%-11s*\n", book->tab_nom[i], book->tab_numero[i]);
     }
     printf("*******************************************\n");
 } else {
